@@ -14,18 +14,6 @@ months:
     regions: [us]
     mday: 1
     observed: to_weekday_if_weekend
-  - name: Martin Luther King, Jr. Day
-    week: 3
-    regions: [us]
-    wday: 1
-  - name: Inauguration Day
-    function: us_inauguration_day(year)
-    regions: [us_dc]
-  2: 
-  - name: Presidents' Day
-    week: 3
-    regions: [us]
-    wday: 1
   5: 
   - name: Memorial Day
     week: -1
@@ -47,15 +35,19 @@ months:
     regions: [us]
     wday: 1
   11: 
-  - name: Veterans Day
-    regions: [us]
-    mday: 11
-    observed: to_weekday_if_weekend
   - name: Thanksgiving
     week: 4
     regions: [us]
     wday: 4
+  - name: Day after Thanksgiving  		
+    week: 4
+    regions: [us]
+    wday: 5
   12: 
+  - name: Christmas Eve  					
+    regions: [us]
+    mday: 24
+    observed: to_weekday_if_weekend
   - name: Christmas Day
     regions: [us]
     mday: 25
@@ -76,6 +68,8 @@ tests: |
      Date.civil(2008,10,13) => 'Columbus Day',
      Date.civil(2008,11,11) => 'Veterans Day',
      Date.civil(2008,11,27) => 'Thanksgiving',
+     Date.civil(2008,11,28) => 'Day after Thanksgiving',
+     Date.civil(2008,12,24) => 'Christmas Eve'
      Date.civil(2008,12,25) => 'Christmas Day'}.each do |date, name|
       assert_equal name, (Holidays.on(date, :us)[0] || {})[:name]
     end
