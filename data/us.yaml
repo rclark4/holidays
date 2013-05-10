@@ -39,12 +39,12 @@ months:
     week: 4
     regions: [us]
     wday: 4
-  - name: Day after Thanksgiving  		
+  - name: Day after Thanksgiving
     week: 4
     regions: [us]
     wday: 5
   12: 
-  - name: Christmas Eve  					
+  - name: Christmas Eve
     regions: [us]
     mday: 24
     observed: to_weekday_if_weekend
