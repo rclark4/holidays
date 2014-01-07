@@ -29,11 +29,6 @@ months:
     week: 1
     regions: [us]
     wday: 1
-  10: 
-  - name: Columbus Day
-    week: 2
-    regions: [us]
-    wday: 1
   11: 
   - name: Thanksgiving
     week: 4

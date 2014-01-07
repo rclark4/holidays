@@ -13,7 +13,7 @@ module Holidays
   # All the definitions are available at https://github.com/alexdunae/holidays
   module North_America # :nodoc:
     def self.defined_regions
-      [:ca, :ca_qc, :ca_ab, :ca_on, :ca_sk, :ca_mb, :ca_bc, :ca_nf, :ca_nt, :ca_nu, :ca_ns, :ca_yk, :mx, :mx_pue, :us, :us_dc]
+      [:ca, :ca_qc, :ca_ab, :ca_on, :ca_sk, :ca_mb, :ca_bc, :ca_nf, :ca_nt, :ca_nu, :ca_ns, :ca_yk, :mx, :mx_pue, :us]
     end
 
     def self.holidays_by_month
@@ -25,14 +25,11 @@ module Holidays
             {:mday => 2, :name => "New Year's", :regions => [:ca_qc]},
             {:mday => 1, :name => "Año nuevo", :regions => [:mx]},
             {:mday => 6, :name => "Dia de los Santos Reyes", :regions => [:mx]},
-            {:mday => 1, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "New Year's Day", :regions => [:us]},
-            {:wday => 1, :week => 3, :name => "Martin Luther King, Jr. Day", :regions => [:us]},
-            {:function => lambda { |year| Holidays.us_inauguration_day(year) }, :function_id => "us_inauguration_day(year)", :name => "Inauguration Day", :regions => [:us_dc]}],
+            {:mday => 1, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "New Year's Day", :regions => [:us]}],
       2 => [{:wday => 1, :week => 3, :name => "Family Day", :regions => [:ca_ab, :ca_on, :ca_sk]},
             {:wday => 1, :week => 3, :name => "Louis Riel Day", :regions => [:ca_mb]},
             {:wday => 1, :week => 2, :name => "BC Family Day", :regions => [:ca_bc]},
             {:wday => 1, :week => 1, :name => "Día de la Constitución", :regions => [:mx]},
-            {:wday => 1, :week => 3, :name => "Presidents' Day", :regions => [:us]},
             {:mday => 2, :type => :informal, :name => "Groundhog Day", :regions => [:us, :ca]},
             {:mday => 14, :type => :informal, :name => "Valentine's Day", :regions => [:us, :ca]}],
       3 => [{:mday => 23, :name => "St. George's Day", :regions => [:ca_nf]},
@@ -73,14 +70,15 @@ module Holidays
             {:mday => 1, :type => :informal, :name => "Todos los Santos", :regions => [:mx]},
             {:mday => 2, :type => :informal, :name => "Los Fieles Difuntos", :regions => [:mx]},
             {:wday => 1, :week => 3, :name => "Día de la Revolución", :regions => [:mx]},
-            {:mday => 11, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Veterans Day", :regions => [:us]},
-            {:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:us]}],
+            {:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:us]},
+            {:wday => 5, :week => 4, :name => "Day after Thanksgiving", :regions => [:us]}],
       12 => [{:mday => 25, :name => "Christmas Day", :regions => [:ca]},
             {:mday => 26, :name => "Boxing Day", :regions => [:ca]},
             {:mday => 12, :type => :informal, :name => "Día de la Virgen de Guadalupe", :regions => [:mx]},
             {:mday => 24, :type => :informal, :name => "Nochebuena", :regions => [:mx]},
             {:mday => 25, :name => "Navidad", :regions => [:mx]},
             {:mday => 28, :name => "Los Santos Inocentes", :regions => [:mx]},
+            {:mday => 24, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Christmas Eve", :regions => [:us]},
             {:mday => 25, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Christmas Day", :regions => [:us]}],
       4 => [{:mday => 30, :type => :informal, :name => "Día del Niño", :regions => [:mx]},
             {:mday => 1, :type => :informal, :name => "April Fool's Day", :regions => [:us, :ca]},

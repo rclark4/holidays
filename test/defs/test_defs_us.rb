@@ -16,6 +16,8 @@ class UsDefinitionTests < Test::Unit::TestCase  # :nodoc:
  Date.civil(2008,10,13) => 'Columbus Day',
  Date.civil(2008,11,11) => 'Veterans Day',
  Date.civil(2008,11,27) => 'Thanksgiving',
+ Date.civil(2008,11,28) => 'Day after Thanksgiving',
+ Date.civil(2008,12,24) => 'Christmas Eve'
  Date.civil(2008,12,25) => 'Christmas Day'}.each do |date, name|
   assert_equal name, (Holidays.on(date, :us)[0] || {})[:name]
 end
