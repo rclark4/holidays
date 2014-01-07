@@ -24,8 +24,6 @@ module Holidays
             {:wday => 0, :week => 3, :type => :informal, :name => "Father's Day", :regions => [:us, :ca]}],
       7 => [{:mday => 4, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Independence Day", :regions => [:us]}],
       9 => [{:wday => 1, :week => 1, :name => "Labor Day", :regions => [:us]}],
-      10 => [{:wday => 1, :week => 2, :name => "Columbus Day", :regions => [:us]},
-            {:mday => 31, :type => :informal, :name => "Halloween", :regions => [:us, :ca]}],
       11 => [{:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:us]},
             {:wday => 5, :week => 4, :name => "Day after Thanksgiving", :regions => [:us]}],
       12 => [{:mday => 24, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Christmas Eve", :regions => [:us]},
@@ -34,7 +32,8 @@ module Holidays
             {:mday => 14, :type => :informal, :name => "Valentine's Day", :regions => [:us, :ca]}],
       3 => [{:mday => 17, :type => :informal, :name => "St. Patrick's Day", :regions => [:us, :ca]}],
       4 => [{:mday => 1, :type => :informal, :name => "April Fool's Day", :regions => [:us, :ca]},
-            {:mday => 22, :type => :informal, :name => "Earth Day", :regions => [:us, :ca]}]
+            {:mday => 22, :type => :informal, :name => "Earth Day", :regions => [:us, :ca]}],
+      10 => [{:mday => 31, :type => :informal, :name => "Halloween", :regions => [:us, :ca]}]
       }
     end
   end
