@@ -25,7 +25,7 @@ module Holidays
       7 => [{:mday => 4, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Independence Day", :regions => [:us]}],
       9 => [{:wday => 1, :week => 1, :name => "Labor Day", :regions => [:us]}],
       11 => [{:wday => 4, :week => 4, :name => "Thanksgiving", :regions => [:us]},
-            {:wday => 5, :week => 4, :name => "Day after Thanksgiving", :regions => [:us]}],
+            {:function => lambda { |year| Holidays.day_after_thanksgiving(year) }, :function_id => "day_after_thanksgiving(year)", :name => "Day after Thanksgiving", :regions => [:us]}],
       12 => [{:mday => 24, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Christmas Eve", :regions => [:us]},
             {:mday => 25, :observed => lambda { |date| Holidays.to_weekday_if_weekend(date) }, :observed_id => "to_weekday_if_weekend", :name => "Christmas Day", :regions => [:us]}],
       2 => [{:mday => 2, :type => :informal, :name => "Groundhog Day", :regions => [:us, :ca]},
@@ -41,6 +41,11 @@ module Holidays
 # January 20, every fourth year, following Presidential election
 def self.us_inauguration_day(year)
   year % 4 == 1 ? 20 : nil
+end
+
+
+def self.day_after_thanksgiving(year)
+  Date.civil(year,11,Date.calculate_mday(year,11,:fourth,:thursday)+1)
 end
 
 

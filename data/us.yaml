@@ -35,9 +35,8 @@ months:
     regions: [us]
     wday: 4
   - name: Day after Thanksgiving
-    week: 4
+    function: day_after_thanksgiving(year)
     regions: [us]
-    wday: 5
   12:
   - name: Christmas Eve
     regions: [us]
@@ -52,6 +51,10 @@ methods:
     # January 20, every fourth year, following Presidential election
     def self.us_inauguration_day(year)
       year % 4 == 1 ? 20 : nil
+    end
+  day_after_thanksgiving: |
+    def self.day_after_thanksgiving(year)
+      Date.civil(year,11,Date.calculate_mday(year,11,:fourth,:thursday)+1)
     end
 tests: |
     {Date.civil(2008,1,1) => 'New Year\'s Day',
