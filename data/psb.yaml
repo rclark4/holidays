@@ -6,62 +6,44 @@
 months:
   0:
   - name: Good Friday
-    regions: [us]
+    regions: [psb]
     function: easter(year)-2
-    type: informal
-  - name: Easter Sunday
-    regions: [us]
-    function: easter(year)
     type: informal
   1:
   - name: New Year's Day
-    regions: [us]
+    regions: [psb]
     mday: 1
     observed: to_weekday_if_weekend
-  - name: Martin Luther King, Jr. Day
-    week: 3
-    regions: [us]
-    wday: 1
-  - name: Inauguration Day
-    function: us_inauguration_day(year)
-    regions: [us_dc]
-  2:
-  - name: Presidents' Day
-    week: 3
-    regions: [us]
-    wday: 1
   5:
   - name: Memorial Day
     week: -1
-    regions: [us]
+    regions: [psb]
     wday: 1
   7:
   - name: Independence Day
-    regions: [us]
+    regions: [psb]
     mday: 4
     observed: to_weekday_if_weekend
   9:
   - name: Labor Day
     week: 1
-    regions: [us]
-    wday: 1
-  10:
-  - name: Columbus Day
-    week: 2
-    regions: [us]
+    regions: [psb]
     wday: 1
   11:
-  - name: Veterans Day
-    regions: [us]
-    mday: 11
-    observed: to_weekday_if_weekend
   - name: Thanksgiving
     week: 4
-    regions: [us]
+    regions: [psb]
     wday: 4
+  - name: Day after Thanksgiving
+    function: day_after_thanksgiving(year)
+    regions: [psb]
   12:
+  - name: Christmas Eve
+    regions: [psb]
+    mday: 24
+    observed: to_weekday_if_weekend
   - name: Christmas Day
-    regions: [us]
+    regions: [psb]
     mday: 25
     observed: to_weekday_if_weekend
 methods:
@@ -70,16 +52,18 @@ methods:
     def self.us_inauguration_day(year)
       year % 4 == 1 ? 20 : nil
     end
+  day_after_thanksgiving: |
+    def self.day_after_thanksgiving(year)
+      Date.civil(year,11,Date.calculate_mday(year,11,:fourth,:thursday)+1)
+    end
 tests: |
     {Date.civil(2008,1,1) => 'New Year\'s Day',
-     Date.civil(2008,1,21) => 'Martin Luther King, Jr. Day',
-     Date.civil(2008,2,18) => 'Presidents\' Day',
      Date.civil(2008,5,26) => 'Memorial Day',
      Date.civil(2008,7,4) => 'Independence Day',
      Date.civil(2008,9,1) => 'Labor Day',
-     Date.civil(2008,10,13) => 'Columbus Day',
-     Date.civil(2008,11,11) => 'Veterans Day',
      Date.civil(2008,11,27) => 'Thanksgiving',
+     Date.civil(2008,11,28) => 'Day after Thanksgiving',
+     Date.civil(2008,12,24) => 'Christmas Eve',
      Date.civil(2008,12,25) => 'Christmas Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :us)[0] || {})[:name]
+      assert_equal name, (Holidays.on(date, :psb)[0] || {})[:name]
     end

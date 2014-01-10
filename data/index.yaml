@@ -1,5 +1,5 @@
 # Definition build list
---- 
+---
 defs:
   AT: ['at.yaml']
   AU: ['au.yaml']
@@ -28,6 +28,7 @@ defs:
   NYSE: ['nyse.yaml']
   NZ: ['nz.yaml']
   PL: ['pl.yaml']
+  PSB: ['psb.yaml']
   PT: ['pt.yaml']
   SE: ['se.yaml']
   US: ['us.yaml', 'north_america_informal.yaml']

@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = "holidays"
-  s.version = "1.0.5"
+  s.version = "1.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Alex Dunae"]
+  s.authors = ["Ryan Clark"]
   s.date = "2013-04-18"
   s.description = "A collection of Ruby methods to deal with statutory and other holidays.  You deserve a holiday!"
-  s.email = "code@dunae.ca"
+  s.email = "ryan.clark@premierespeaker.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -55,6 +55,7 @@ Gem::Specification.new do |s|
     "data/nyse.yaml",
     "data/nz.yaml",
     "data/pl.yaml",
+    "data/psb.yaml",
     "data/pt.yaml",
     "data/se.yaml",
     "data/united_nations.yaml",
@@ -95,6 +96,7 @@ Gem::Specification.new do |s|
     "lib/holidays/nyse.rb",
     "lib/holidays/nz.rb",
     "lib/holidays/pl.rb",
+    "lib/holidays/psb.rb",
     "lib/holidays/pt.rb",
     "lib/holidays/scandinavia.rb",
     "lib/holidays/se.rb",
@@ -134,6 +136,7 @@ Gem::Specification.new do |s|
     "test/defs/test_defs_nyse.rb",
     "test/defs/test_defs_nz.rb",
     "test/defs/test_defs_pl.rb",
+    "test/defs/test_defs_psb.rb",
     "test/defs/test_defs_pt.rb",
     "test/defs/test_defs_scandinavia.rb",
     "test/defs/test_defs_se.rb",
