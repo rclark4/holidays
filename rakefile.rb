@@ -5,7 +5,7 @@ require 'rdoc/task'
 require 'yaml'
 require 'fileutils'
 require 'holidays'
-require 'holidays/psb'
+
 require File.expand_path('data/build_defs')
 
 task :default => :test
